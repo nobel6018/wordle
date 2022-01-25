@@ -31,7 +31,7 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
         onDelete()
       } else {
         const _key = e.key.toUpperCase()
-        const key = alpha_2_kr[_key] && alpha_2_kr[_key] || _key;
+        const key = (alpha_2_kr[_key] && alpha_2_kr[_key]) || _key;
         
         if (key.length === 1 && krs.indexOf(key) >= 0) {
           onChar(key)

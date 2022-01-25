@@ -19,5 +19,5 @@ export const Cell = ({ value, status }: Props) => {
     }
   )
 
-  return <div className={classes}>{value && alpha_2_kr[value] || value}</div>
+  return <div className={classes}>{(value && alpha_2_kr[value]) || value}</div>
 }
