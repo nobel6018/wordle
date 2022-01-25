@@ -19,7 +19,7 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
     } else if (value === 'DELETE') {
       onDelete()
     } else {
-      onChar(value)
+      onChar(alpha_2_kr[value])
     }
   }
 
