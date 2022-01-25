@@ -1,5 +1,5 @@
 import { KeyValue } from '../../lib/keyboard'
-import { getStatuses } from '../../lib/statuses'
+import { alpha_2_kr, getStatuses, krs } from '../../lib/statuses'
 import { Key } from './Key'
 import { useEffect } from 'react'
 
@@ -30,8 +30,10 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
       } else if (e.code === 'Backspace') {
         onDelete()
       } else {
-        const key = e.key.toUpperCase()
-        if (key.length === 1 && key >= 'A' && key <= 'Z') {
+        const _key = e.key.toUpperCase()
+        const key = alpha_2_kr[_key] && alpha_2_kr[_key] || _key;
+        
+        if (key.length === 1 && krs.indexOf(key) >= 0) {
           onChar(key)
         }
       }

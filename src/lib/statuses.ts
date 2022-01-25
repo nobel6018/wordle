@@ -1,5 +1,12 @@
 import { solution } from './words'
 
+export const alphas = 'QWERTYUIOPASDFGHJKLZXCVBNM'.split('')
+export const krs = 'ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔㅁㄴㅇㄹㅎㅗㅓㅏㅣㅋㅌㅊㅍㅠㅜㅡ'.split('')
+
+export const alpha_2_kr = Object.fromEntries(alphas.map((k,i) => [k,krs[i]]))
+export const kr_2_alpha = Object.fromEntries(krs.map((k,i) => [k,alphas[i]]))
+
+
 export type CharStatus = 'absent' | 'present' | 'correct'
 
 export type CharValue =
@@ -37,19 +44,20 @@ export const getStatuses = (
 
   guesses.forEach((word) => {
     word.split('').forEach((letter, i) => {
+      const _letter = kr_2_alpha[letter]
       if (!solution.includes(letter)) {
         // make status absent
-        return (charObj[letter] = 'absent')
+        return (charObj[_letter] = 'absent')
       }
 
       if (letter === solution[i]) {
         //make status correct
-        return (charObj[letter] = 'correct')
+        return (charObj[_letter] = 'correct')
       }
 
-      if (charObj[letter] !== 'correct') {
+      if (charObj[_letter] !== 'correct') {
         //make status present
-        return (charObj[letter] = 'present')
+        return (charObj[_letter] = 'present')
       }
     })
   })
@@ -100,3 +108,4 @@ export const getGuessStatuses = (guess: string): CharStatus[] => {
 
   return statuses
 }
+

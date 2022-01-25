@@ -1,4 +1,4 @@
-import { CharStatus } from '../../lib/statuses'
+import { CharStatus, alpha_2_kr } from '../../lib/statuses'
 import classnames from 'classnames'
 
 type Props = {
@@ -19,5 +19,5 @@ export const Cell = ({ value, status }: Props) => {
     }
   )
 
-  return <div className={classes}>{value}</div>
+  return <div className={classes}>{value && alpha_2_kr[value] || value}</div>
 }

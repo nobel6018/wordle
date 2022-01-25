@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import classnames from 'classnames'
 import { KeyValue } from '../../lib/keyboard'
-import { CharStatus } from '../../lib/statuses'
+import { CharStatus, alpha_2_kr } from '../../lib/statuses'
 
 type Props = {
   children?: ReactNode
@@ -10,7 +10,7 @@ type Props = {
   status?: CharStatus
   onClick: (value: KeyValue) => void
 }
-
+  
 export const Key = ({
   children,
   status,
@@ -41,7 +41,7 @@ export const Key = ({
       className={classes}
       onClick={handleClick}
     >
-      {children || value}
+      {children || alpha_2_kr[value] || value}
     </button>
   )
 }
