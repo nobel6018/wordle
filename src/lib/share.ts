@@ -3,7 +3,7 @@ import { solutionIndex } from './words'
 
 export const shareStatus = (guesses: string[]) => {
   navigator.clipboard.writeText(
-    'Wordle ' +
+    '#한글 #워들 #Korean #Wordle https://nakosung.github.io/wordle ' +
       solutionIndex +
       ' ' +
       guesses.length +
